@@ -1,0 +1,127 @@
+##############################################################################
+#
+# Copyright (c) 2003-2004 Zope Foundation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: Mon Dec 23 16:15:45 2013\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+
+#: kk.experts:/expert.py:101
+msgid "Body text"
+msgstr ""
+
+#: kk.experts:/expert.py:105
+msgid "CV-PDF Upload"
+msgstr ""
+
+#: kk.experts:/expert.py:81
+msgid "Invalid file type"
+msgstr ""
+
+#: kk.experts:/expert.py:93
+msgid "Title"
+msgstr ""
+
+#: kk.experts:/expert.py:94
+msgid "Description"
+msgstr ""
+
+#: kk.experts:/expert.py:95
+msgid "Professional experience"
+msgstr ""
+
+#: kk.experts:/expert.py:97
+msgid "Functional criteria"
+msgstr ""
+
+#: kk.experts:/expert.py:99
+msgid "Subject criteria"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/expert_search_results.pt:33
+#: kk.experts:/expert_templates/view.pt:21
+#. Default: "Search for Experts"
+msgid "heading_expert_search"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/expert_search_results.pt:36
+#: kk.experts:/expert_templates/view.pt:24
+#. Default: "This search form enables you to find experts by specifying one or more search criteria."
+msgid "description_expert_search"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/expert_search_results.pt:43
+#. Default: "${number} items matching your criteria."
+msgid "batch_x_items_matching_your_criteria"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/expert_search_results.pt:58
+#: kk.experts:/expert_templates/view.pt:43
+#. Default: "Professional experience"
+msgid "label_professional_experience"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/expert_search_results.pt:63
+#: kk.experts:/expert_templates/view.pt:50
+#. Default: "Functional criteria"
+msgid "label_functional_criteria"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/expert_search_results.pt:68
+#: kk.experts:/expert_templates/view.pt:57
+#. Default: "Subject criteria"
+msgid "label_subject_criteria"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/expert_search_results.pt:74
+#. Default: "full card"
+msgid "link_full_card"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/expert_search_results.pt:92
+#. Default: "No results were found."
+msgid "description_no_results_found"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/view.pt:103
+#. Default: "Expert Search Criteria"
+msgid "legend_expert_search_criteria"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/view.pt:108
+#. Default: "Professional experience"
+msgid "button_professional_experience"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/view.pt:127
+#. Default: "Functional criteria"
+msgid "button_functional_criteria"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/view.pt:146
+#. Default: "Subject criteria"
+msgid "button_subject_criteria"
+msgstr ""
+
+#: kk.experts:/expert_folder_templates/view.pt:165
+#. Default: "Search"
+msgid "label_search"
+msgstr ""
+

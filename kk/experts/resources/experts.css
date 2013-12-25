@@ -1,0 +1,50 @@
+	.CriButton {
+    	color: #D2EBEF;
+    	cursor: pointer;
+    	font-size: 12px;
+    	font-weight: bold;
+   	 	height: 24px;
+    	margin: 0;
+    	padding: 9px 0 0 16px;
+    	text-transform: uppercase;
+    	vertical-align: middle;
+    	white-space: nowrap;
+    	width: 406px;
+    	background-color:#990D1A;
+
+	}
+	.CriButtonContent {
+		 margin: 16px 0 0 217px;
+	}
+	.cCri {
+		float:left;
+	    background-color: #990D1A;
+    	height: 38px;
+   		margin: 0 5px 5px 0 !important;
+    	padding: 5px 0 0 5px;
+    	width: 182px;
+        color: #C3DBE5;
+        cursor: pointer;
+	}
+	.cCri label {
+		display:block;
+		cursor: pointer;
+	}
+	.cCri label.active {
+		color: #ff0000;
+	}
+	.cCri input[type='checkbox'] {
+		 display:none; 
+	}
+
+.clear {
+        clear:left;
+        display:block;
+        float:none;
+        font-size:0;
+        line-height:0;
+}
+.mmarg {        
+        margin-bottom:10px;
+}
+
