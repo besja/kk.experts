@@ -77,7 +77,8 @@ def subject_criteria(context):
 
 def checkMimeType(value):
     # ??? why fdf ??? 
-    if not (value.contentType == "application/fdf"):
+
+    if not (value.contentType == "application/fdf" or value.contentType == "application/pdf") :
         raise Invalid(_(u"Invalid file type"))
     return True
     
@@ -136,7 +137,7 @@ class View(grok.View):
 
 
     def getFunctCrit(self):
-  
+
         voc = functional_criteria(self.context)
         terms = self.context.FunctCrit
         result = []
