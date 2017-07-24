@@ -1,3 +1,2 @@
 setuptools
-plone.app.dexterity [grok]
-plone.namedfile [blobs]
+plone.namedfile[blobs]

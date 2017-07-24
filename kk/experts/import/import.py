@@ -11,12 +11,12 @@ from Testing.makerequest import makerequest
 from plone import namedfile
 from plone.app.textfield.value import RichTextValue
 
-plone_site_id = 'Plone' # Adjust as needed.
+plone_site_id = 'apc' # Adjust as needed.
 
 app = makerequest(app)
 site = app[plone_site_id]
 setSite(site)
-user = app.acl_users.getUser('admin').__of__(site.acl_users)
+user = app.acl_users.getUser('zope-admin').__of__(site.acl_users)
 newSecurityManager(None, user)
 
 
@@ -25,7 +25,7 @@ source_path = os.path.join(os.path.dirname(sys.modules['kk.experts'].__file__),'
 source = open(source_path)
 data = json.loads(source.read())
 
-f = app.Plone.expertsearch
+f = app.apc.en.expertsearch
 
 for i in data:
     id = i['title']

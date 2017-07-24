@@ -6,8 +6,7 @@ version = '1.0'
 setup(name='kk.experts',
       version=version,
       description="Experts for androschin.com",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      long_description=open("README.txt").read(),
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
@@ -26,7 +25,6 @@ setup(name='kk.experts',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'plone.app.dexterity [grok]',
           'plone.namedfile [blobs]',
           # -*- Extra requirements: -*-
       ],

@@ -7,29 +7,17 @@
       i18n:domain="kk.experts">
 <body>
 
-<tal:comment tal:condition="nothing">
-    This is a sample view template. It will not be used for rendering the
-    content unless activated by creation of a view class with a matching name.
-</tal:comment>
-
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
 
  	<div class="goBack"><a href="javascript:history.back()" class="link-parent"> Zurück zur den Suchergebnissen </a></div>
-
-
-    <h1 class="documentFirstHeading"
-        i18n:translate="heading_expert_search">Search for Experts</h1>
-
-    <h2 class="searchDescription" i18n:translate="description_expert_search">
-        This search form enables you to find experts by specifying one or more search criteria.
-    </h2>
+  <div class="headstyle" i18n:translate="expert">Unser Experte</div>
     <div class="npExp">
     	<div class="numExp" tal:content="context/Title">023</div>
     	<tal:cond tal:condition="context/PdfFile">
-    		<div class="pdfExp" tal:define="size context/PdfFile/size; filename context/PdfFile/filename" tal:condition="size">
+    		<div class="well pdfExp" tal:define="size context/PdfFile/size; filename context/PdfFile/filename" tal:condition="size">
      			<tal:forpdf define="weight python:'%sKb' % (size / 1024)">
-     				<a href="" tal:attributes="href string:${context/absolute_url}/@@download/PdfFile/${context/PdfFile/filename}">PDF</a><br />(<tal:size content="weight">0Kb</tal:size>)
+     				<a href="" tal:attributes="href string:${context/absolute_url}/@@download/PdfFile/${context/PdfFile/filename}"><i class="fa fa-file-text-o"></i> PDF</a> - (<tal:size content="weight">0Kb</tal:size>)
      			</tal:forpdf>
     		</div>
     	</tal:cond>
@@ -63,7 +51,8 @@
     	<a href="#" tal:attributes="href string:${context/aq_parent/absolute_url}" class="link-parent"> Neue Suche </a>    
     </div>
  
-    <div class="contact">
+    <br />
+        <div class="well">
     	<p>Wenn Sie mehr zu unseren Experten wissen wollen nehmen Sie hier unverbindlich mit uns 
     			<a href="/kontakt/kontakt/kontaktformular" class="link-contact">Kontakt</a> auf.</p>
     </div>

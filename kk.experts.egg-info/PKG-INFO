@@ -13,14 +13,6 @@ Description: Introduction
         
         This product may contain traces of nuts.
         
-        Changelog
-        =========
-        
-        1.0dev (unreleased)
-        -------------------
-        
-        - Initial release
-        
 Platform: UNKNOWN
 Classifier: Framework :: Plone
 Classifier: Programming Language :: Python

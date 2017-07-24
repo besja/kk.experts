@@ -7,10 +7,6 @@
       i18n:domain="kk.experts">
 <body>
 
-<tal:comment tal:condition="nothing">
-    This is a sample view template. It will not be used for rendering the
-    content unless activated by creation of a view class with a matching name.
-</tal:comment>
     <metal:block fill-slot="style_slot">
         <link rel="stylesheet" type="text/css"
             tal:define="navroot context/@@plone_portal_state/navigation_root_url"
@@ -46,26 +42,36 @@ $(document).ready(function(){
 });
 </script>
 
-  <form action="expert_search_results"
-          class="enableAutoFocus"
-          method="post"
-          name="search" id="criSearch" enctype="multipart/form-data">
+  <form action="http://localhost:8080/Plain/experts/expert_search_results"
+        class=""
+        method="post"
+        name="search" id="criSearch" enctype="multipart/form-data" 
+        tal:attributes="action string:${context/absolute_url}/expert_search_results">
 
-        <div class="headstyle" i18n:translate="legend_expert_search_criteria">Expert Search Criteria</div>
-        
-        <div id="ExpertSearchButtons">
+    <div class="row">
+        <div class="col-xs-12 col-lg-12">
+            <div class="headstyle" i18n:translate="legend_expert_search_criteria">Expert Search Criteria</div>
+        </div>
+        <div class="searchDescription" i18n:translate="description_expert_search">
+            This search form enables you to find experts by specifying one or more search criteria.
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-lg-12">
+            <div id="ExpertSearchButtons">
             
             <tal:fields tal:define="results view/getProfExp">
-                <div class="CriButton" i18n:translate="button_professional_experience">Professional experience</div>
+                <div class="CriButton" i18n:translate="button_professional_experience"><i class="fa fa-chevron-circle-down"></i> Professional experience</div>
 
-                <div class='CriButtonContent'>
+                <div class='CriButtonContent clearfix'>
                     <div class="allCri">
                         <tal:block tal:repeat="item results">
                             <div class="cCri" tal:define="numbr repeat/item/number;">
                                 <input name="ProfExp" type="checkbox" value="" tal:attributes="value python:item.value; id python:'ProfExp['+str(numbr)+']';" />
                                 <label for="ProfExp" tal:attributes="for python:'ProfExp['+str(numbr)+']';">
-                                	<span>
-                                		<div class="curC" tal:content="python:item.title" />
+                                	<span><i class="fa fa-check-square"></i>
+                                		<span class="curC" tal:content="python:item.title" />
                                 	</span>
                                 </label>
                             </div>
@@ -75,7 +81,7 @@ $(document).ready(function(){
                 <br class="clear mmarg"/>
             </tal:fields>
             <tal:fields tal:define="results view/getFunctCrit">
-                <div class="CriButton" i18n:translate="button_functional_criteria">Functional criteria</div>
+                <div class="CriButton" i18n:translate="button_functional_criteria"><i class="fa fa-chevron-circle-down"></i> Functional criteria</div>
 
                 <div class='CriButtonContent'>
                     <div class="allCri">
@@ -83,8 +89,8 @@ $(document).ready(function(){
                             <div class="cCri" tal:define="numbr repeat/item/number;">
                                 <input name="FunctCrit" type="checkbox" value="" tal:attributes="value python:item.value; id python:'FunctCrit['+str(numbr)+']';" />
                                 <label for="FunctCrit" tal:attributes="for python:'FunctCrit['+str(numbr)+']';">
-                                	<span>
-                                		<div class="curC" tal:content="python:item.title" />
+                                	<span><i class="fa fa-check-square"></i>
+                                		<span class="curC" tal:content="python:item.title" />
                                 	</span>
                                 </label>
                             </div>
@@ -94,7 +100,7 @@ $(document).ready(function(){
                 <br class="clear mmarg"/>
             </tal:fields>     
             <tal:fields tal:define="results view/getSubCrit">
-                <div class="CriButton" i18n:translate="button_subject_criteria">Subject criteria</div>
+                <div class="CriButton" i18n:translate="button_subject_criteria"><i class="fa fa-chevron-circle-down"></i> Subject criteria</div>
 
                 <div class='CriButtonContent'>
                     <div class="allCri">
@@ -102,8 +108,8 @@ $(document).ready(function(){
                             <div class="cCri" tal:define="numbr repeat/item/number;">
                                 <input name="SubCrit" type="checkbox" value="" tal:attributes="value python:item.value; id python:'SubCrit['+str(numbr)+']';" />
                                 <label for="SubCrit" tal:attributes="for python:'SubCrit['+str(numbr)+']';">
-                                	<span>
-                                		<div class="curC" tal:content="python:item.title" />
+                                	<span><i class="fa fa-check-square"></i>
+                                		<span class="curC" tal:content="python:item.title" />
                                 	</span>
                                 </label>
                             </div>
@@ -113,18 +119,39 @@ $(document).ready(function(){
                 <br class="clear mmarg"/>
             </tal:fields>         
             <div class="expertFormControls">
-                <button type="submit" name="submit" i18n:translate="label_search">Search</button>
+                <button class="btn btn-primary btn-lg" type="submit" name="submit" i18n:translate="label_search">Search</button>
             </div>
-  			<p>&nbsp;</p>
-            <p class="suchtext01"><b>Anwendungshinweise:</b></p>
-			<p class="suchtext01">1. Wählen Sie eine der drei Kategorien (Branchen-, Funktions- oder Themenkompetenz) aus, über die Sie unsere Datenbank durchsuchen wollen.<br />
-2. Wählen Sie eine oder mehrere der Detailkompetenzen aus (wie z.B. Einkauf oder Controlling).<br />
-3. Klicken Sie auf „Experten suchen“.<br />
-4. Klicken Sie in der Trefferliste auf den Kandidaten, der Sie näher interessiert, um einen Überblick seiner Kompetenzen zu erhalten.<br />
-5. Klicken Sie auf „…weitere Details zu diesem Experten“ um eine verbale Beschreibung und eine Übersicht seiner Schlüsselprojekte (auch als pdf) zu erhalten.<br />
-6. Wenn Sie darüber hinaus Informationen wünschen, klicken Sie bitte auf „Kontakt“ und schreiben Sie uns. Wir freuen uns Ihnen dann umgehend umfangreich zu für Sie passende Experten detailliert Auskunft zu geben.</p>
+            <br />
+  			<div class="well">
+            <h3>Anwendungshinweise:</h3>
+			    <ol>
+                    <li>Wählen Sie eine der drei Kategorien (Branchen-, 
+                        Funktions- oder Themenkompetenz) aus, über die 
+                        Sie unsere Datenbank durchsuchen wollen
+                    </li>
+                    <li>Wählen Sie eine oder mehrere der Detailkompetenzen 
+                        aus (wie z.B. Einkauf oder Controlling).
+                    </li>
+                    <li>Klicken Sie auf „Experten suchen“.
+                    </li>
+                    <li>Klicken Sie in der Trefferliste auf den Kandidaten, 
+                        der Sie näher interessiert, um einen Überblick seiner 
+                        Kompetenzen zu erhalten.
+                    </li>
+                    <li>Klicken Sie auf „…weitere Details zu diesem Experten“ 
+                        um eine verbale Beschreibung und eine Übersicht seiner 
+                        Schlüsselprojekte (auch als pdf) zu erhalten.
+                    </li>
+                    <li>Wenn Sie darüber hinaus Informationen wünschen, 
+                        klicken Sie bitte auf „Kontakt“ und schreiben Sie uns. 
+                        Wir freuen uns Ihnen dann umgehend umfangreich zu für 
+                        Sie passende Experten detailliert Auskunft zu geben.
+                    </li>
+                </ol>
+            </div>
        
         </div>
+    </div>
         
     </form>
 

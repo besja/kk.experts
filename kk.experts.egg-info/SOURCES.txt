@@ -1,5 +1,4 @@
 README.txt
-setup.cfg
 setup.py
 kk/__init__.py
 kk.experts.egg-info/PKG-INFO
@@ -15,4 +14,3 @@ kk/experts/__init__.py
 kk/experts/config.py
 kk/experts/expert.py
 kk/experts/expert_folder.py
-kk/experts/tests.py

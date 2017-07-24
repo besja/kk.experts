@@ -7,11 +7,6 @@
       i18n:domain="kk.experts">
 <body>
 
-<tal:comment tal:condition="nothing">
-    This is a sample view template. It will not be used for rendering the
-    content unless activated by creation of a view class with a matching name.
-</tal:comment>
-
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
  <script type='text/javascript'>
@@ -29,30 +24,21 @@ $(document).ready(function(){
 });
 </script>
 	<div tal:define="results python:view.searchForExperts();">
+    <div class="headstyle" i18n:translate="heading_expert_search">Search for Experts</div>
+      <div tal:condition="results">
+        <strong class="ergebnis" i18n:translate="batch_x_items_matching_your_criteria">
+        <span i18n:name="number" tal:omit-tag="" tal:content="python:len(results)">234</span> items matching your criteria.</strong>
 
-    	<h1 class="documentFirstHeading"
-        	i18n:translate="heading_expert_search">Search for Experts</h1>
-
-    	<h2 class="searchDescription" i18n:translate="description_expert_search">
-        	This search form enables you to find experts by specifying one or more search criteria.
-    	</h2>
-
-    	<div tal:condition="results">
-
-        	<strong class="ergebnis" i18n:translate="batch_x_items_matching_your_criteria">
-           	 <span i18n:name="number" tal:omit-tag="" tal:content="python:len(results)">234</span> items matching your criteria.
-        	</strong>
-
-        	<div class="allexperts">
-        		<metal:block tal:repeat="result results">
-        			<tal:obj  tal:define="obj result/getObject">
-					<div class="smexp" tal:define="oddrow repeat/result/odd;"
+        <div class="allexperts">
+          <metal:block tal:repeat="result results">
+            <tal:obj  tal:define="obj result/getObject">
+					    <div class="smexp" tal:define="oddrow repeat/result/odd;"
              			tal:attributes="class python: 'smexp evenGrey' if oddrow else 'smexp oddTrpt'">
-        				<div class="numExp"><span tal:replace="result/Title">user id</span></div>
-        				<div class="descExp" tal:condition="obj/desc"><span tal:replace="structure obj/desc/output" /></div>
-        				<br class="clear"/>
-					</div>
-					<div class="dsc" tal:define="oddrow repeat/result/odd;"
+        				      <div class="numExp"><i class="fa fa-chevron-circle-down"></i> <span tal:replace="result/Title">user id</span></div>
+        				      <div class="descExp" tal:condition="obj/desc"><span tal:replace="structure obj/desc/output" /></div>  
+        				  <br class="clear"/>
+              </div>
+					    <div class="dsc" tal:define="oddrow repeat/result/odd;"
              				tal:attributes="class python: 'dsc evenGrey' if oddrow else 'dsc oddTrpt'">
   						<div class="crit">
   							<strong><span i18n:translate="label_professional_experience">Professional experience</span>:</strong>
@@ -70,21 +56,22 @@ $(document).ready(function(){
   							<div tal:replace="obj/@@view/getSubCrit" />
   						</div>
   						<div class="fullExpLink">
-  							<a href="#" tal:attributes="href obj/absolute_url;">
-  								<span i18n:translate="link_full_card">full card</span>
+  							<a class="btn btn-primary" href="#" tal:attributes="href obj/absolute_url;">
+  								<span i18n:translate="link_full_card"><i class="fa fa-sign-in"></i> full card</span>
   							</a>
   						</div>
  					</div>
+          
  					</tal:obj>
        			 </metal:block>
         	</div>
 
     	</div>
     	<div class="goBack">
-    		<a href="#" tal:attributes="href here/absolute_url" class="link-parent"> Neue Suche </a>
+    		<a class="btn btn-primary" href="#" tal:attributes="href here/absolute_url" class="link-parent"> Neue Suche </a>
     	</div>
 
-    	<div class="contact">
+    	<div class="well">
     		<p>Wenn Sie mehr zu unseren Experten wissen wollen nehmen Sie hier unverbindlich mit uns 
     			<a href="/kontakt/kontakt/kontaktformular" class="link-contact">Kontakt</a> auf.</p>
     	</div>

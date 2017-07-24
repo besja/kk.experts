@@ -1,13 +1,12 @@
-from five import grok
-
 from z3c.form import group, field
 from zope import schema
 from zope.interface import invariant, Invalid
 from zope.schema.interfaces import IContextSourceBinder
+from zope.interface import implements 
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 from plone.dexterity.content import Container
-from plone.directives import dexterity, form
+from plone.supermodel import model
 from plone.namedfile.field import NamedImage, NamedFile
 from plone.namedfile.field import NamedBlobImage, NamedBlobFile
 from plone.namedfile.interfaces import IImageScaleTraversable
@@ -18,10 +17,12 @@ from plone.app.textfield import RichText
 from kk.experts import MessageFactory as _
 from kk.experts.expert import functional_criteria, professional_experience, subject_criteria
 
+from Products.Five.browser import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 # Interface class; used to define content-type schema.
 
-class IExpertFolder(form.Schema, IImageScaleTraversable):
+class IExpertFolder(model.Schema, IImageScaleTraversable):
     """
     Folder to store experts
     """
@@ -30,8 +31,8 @@ class IExpertFolder(form.Schema, IImageScaleTraversable):
     # line below and delete the matching file in the models sub-directory.
     # If you want a model-based interface, edit
     # models/expert_folder.xml to define the content type.
+    model.load("models/expert_folder.xml")
 
-    form.model("models/expert_folder.xml")
 
 
 # Custom content-type class; objects created for this content type will
@@ -40,46 +41,27 @@ class IExpertFolder(form.Schema, IImageScaleTraversable):
 # in separate view classes.
 
 class ExpertFolder(Container):
-    grok.implements(IExpertFolder)
+    implements(IExpertFolder)
 
     # Add your class methods and properties here
-
-
-# View class
-# The view will automatically use a similarly named template in
-# expert_folder_templates.
-# Template filenames should be all lower case.
-# The view will render when you request a content object with this
-# interface with "/@@sampleview" appended.
-# You may make this the default view for content objects
-# of this type by uncommenting the grok.name line below or by
-# changing the view class name and template filename to View / view.pt.
-
-class View(grok.View):
+class ExpertFolderView(BrowserView):
     """ sample view class """
-
-    grok.context(IExpertFolder)
-    grok.require('zope2.View')
-
-    grok.name('view')
+    __call__ = ViewPageTemplateFile('expert_folder_templates/view.pt')
     
     def getProfExp(self):
-        return professional_experience(self.context)
+        return professional_experience
         
     def getFunctCrit(self):
-        return functional_criteria(self.context)
+        return functional_criteria
 
     def getSubCrit(self):
-        return subject_criteria(self.context)	
-        	
+        return subject_criteria
+          
     # Add view methods here
 
-class expert_search_results(grok.View):
+class ExpertSearchResultsView(BrowserView):
 
-    grok.context(IExpertFolder)
-    grok.require('zope2.View')
-
-    grok.name('expert_search_results')
+    __call__ = ViewPageTemplateFile('expert_folder_templates/expert_search_results.pt')
     
     def searchForExperts(self):
 
@@ -157,4 +139,3 @@ class expert_search_results(grok.View):
         decorated.sort(lambda a, b: cmp(a[0], b[0]))
         result = [dict_['exp'] for (key, dict_) in decorated]
         return result
-    

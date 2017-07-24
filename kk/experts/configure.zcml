@@ -4,15 +4,11 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    xmlns:grok="http://namespaces.zope.org/grok"
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="kk.experts">
 
   <!-- Include configuration for dependencies listed in setup.py -->
   <includeDependencies package="." />
-
-  <!-- Grok the package to initialize schema interfaces and content classes -->
-  <grok:grok package="." />
 
   <!-- Register a resource directory from which we can deploy static
    resource files. -->
@@ -33,5 +29,22 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
-
+   <browser:page
+        for=".expert.IExpert"
+        name="view"
+        class=".expert.ExpertView"
+        permission="zope2.View"
+        />
+   <browser:page
+        for=".expert_folder.IExpertFolder"
+        name="view"
+        class=".expert_folder.ExpertFolderView"
+        permission="zope2.View"
+        />
+   <browser:page
+        for=".expert_folder.IExpertFolder"
+        name="expert_search_results"
+        class=".expert_folder.ExpertSearchResultsView"
+        permission="zope2.View"
+        />
 </configure>
