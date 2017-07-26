@@ -17,7 +17,7 @@
     	<tal:cond tal:condition="context/PdfFile">
     		<div class="well pdfExp" tal:define="size context/PdfFile/size; filename context/PdfFile/filename" tal:condition="size">
      			<tal:forpdf define="weight python:'%sKb' % (size / 1024)">
-     				<a href="" tal:attributes="href string:${context/absolute_url}/@@download/PdfFile/${context/PdfFile/filename}"><i class="fa fa-file-text-o"></i> PDF</a> - (<tal:size content="weight">0Kb</tal:size>)
+     				<a href="" tal:attributes="href string:${context/absolute_url}/@@download/PdfFile/${context/PdfFile/filename}.pdf"><i class="fa fa-file-text-o"></i> PDF</a> - (<tal:size content="weight">0Kb</tal:size>)
      			</tal:forpdf>
     		</div>
     	</tal:cond>
